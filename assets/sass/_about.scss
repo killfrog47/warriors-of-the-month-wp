@@ -1,0 +1,132 @@
+section {
+	min-height: 1000px;
+
+	@include media($mobile) {
+		min-height: initial;
+	}
+	&#shows {
+		background-image: url('../images/section-bg-one.jpg');
+		background-position: 50% 58%;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	&#video {
+		// box-shadow: inset 0 0 10px black;
+		@include box-shadow(0,0,10px, black, true);
+		// padding-top: 0;
+		min-height: auto;
+		background: #333;
+		// @include linear-gradient(#ffffff, #F7F7F8);
+	}
+	.about,.shows,.blog,.contact-us,.video {
+		@include outer-container;
+		padding: 0 10px;
+		.content { 
+			@include span-columns(8);
+			@include shift(2);
+			text-align: center; 
+			@include media($mobile) {
+				@include span-columns(12);
+				@include shift(0);
+			}
+			h2 {
+				font-size: 1.5em;
+				font-weight: 400;
+				font-family: $roboto;
+			}
+			p {
+				font-size: 1em;
+			}
+		}
+	}
+	.about {
+		.content {
+
+			img {
+				height: auto;
+			}
+		}
+	}
+	.video {
+		// max-width: 100%;
+		// padding: 0;
+		.content {
+			@include span-columns(12);
+			@include shift(0);
+
+			.youtube-video {
+				position: relative;
+				padding-bottom: 56.25%; /* 16:9 */
+				padding-top: 25px;
+				height: 0;
+
+				iframe {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+				// @include media($mobile) {
+				// 	width: 100%;
+				// 	z-index: -1;
+				// }
+			}
+		}
+	}
+	.contact-us {
+		.content {
+			@include span-columns(12);
+			@include shift(0);
+			.half-box {
+				@include span-columns(6);
+				@include shift(0);
+				text-align: left;
+				@include media($mobile) {
+					@include span-columns(12);
+					@include shift(0);
+				}
+				img {
+					z-index: -1;
+					position: relative;
+				}
+			}
+		}
+	}
+	.shows {
+		.content {
+			@include span-columns(12);
+			@include shift(0);
+			text-align: left;
+			h2 {
+				text-align: center;
+				color: $color-white;
+			}
+			table {
+				.bit-tickets,.bit-date {
+					width: auto !important;
+					min-width: 100px;
+				}
+				.bit-uiButton {
+					padding: 10px;
+				}
+				width: 100%;
+				color: $color-white;
+			}
+		}
+	}
+	.blog {
+		.content {
+			@include span-columns(12); 
+			@include shift(0);
+			text-align: left;
+			h2 {
+				text-align: center;
+				color: $color-white;
+			}
+			article {
+
+			}
+		}
+	}
+}

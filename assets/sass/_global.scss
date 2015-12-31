@@ -1,0 +1,64 @@
+html,body {
+	margin: 0;
+	padding: 0; 
+	overflow-x: hidden;
+	// height: 100%;
+}
+section {
+	padding: 50px 0;
+}
+.img-responsive {
+	@include aspect-ratio(427,640);
+}
+.center-block {
+	display: block;
+	margin: 0 auto;
+}
+aside {
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 100;
+	height: 50px;
+	width: 150px;
+	box-sizing: border-box;
+	padding: 5px;
+
+	.facebook {
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		background: url(../images/icons/facebook44.png) no-repeat center;
+		margin-right: 5px;
+	}
+	.instagram {
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		background: url(../images/icons/instagram.png) no-repeat center;
+		margin-right: 5px;
+	}
+	.youtube {
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		background: url(../images/icons/youtube.png) no-repeat center;
+	}
+	// .email {
+	// 	display: block;
+	// 	width: 40px;
+	// 	height: 40px;
+	// 	background: url(assets\images\icons\email.png) no-repeat center;
+	// }
+
+}
+@include media($mobile) {
+	.scroll-container {
+		overflow-x: scroll;
+		overflow-y: hidden;
+		.scroll-holder {
+			height: 100%;
+			width: 960px;
+		}
+	}
+}
