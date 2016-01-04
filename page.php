@@ -14,24 +14,15 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-
-			<?php
-			while ( have_posts() ) : the_post();
-
-				get_template_part( 'template-parts/content', 'page' );
-
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
-
-			endwhile; // End of the loop.
-			?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
+	<section id="about">
+		<div class="about">
+			<div class="content">
+				<h2>About Us</h2>
+				<p>Formed in 2013, Warriors of the Month crafted their initial take on Electric Indie Rock out of Tempe, Arizona. Vocalist, Brandon Johnson, and guitarist, Gilbert Ortega, had originally met as kids in their hometown of Phoenix, Arizona, yet it wouldn't be until their college years that they would collaborate together musically. Brian Chitwood later joined the two adding his own style of introspective baselines and booming rhythms. The WOTM's sound would not be complete without the latest addition, Luis Mendez, who would bring an array of percussive works. Together, they form the unmistakable sounds of none other than Warriors of the Month.</p>
+				<img src="/assets/images/band-pic.jpg" height="427" width="640" alt="">
+			</div>
+		</div>
+	</section>
 
 <?php
 get_sidebar();

@@ -92,6 +92,35 @@ function warriors_of_the_month_content_width() {
 }
 add_action( 'after_setup_theme', 'warriors_of_the_month_content_width', 0 );
 
+function clean_custom_menus() {
+	$menu_name = 'primary'; // specify custom menu slug
+	if (($locations = get_nav_menu_locations()) && isset($locations[$menu_name])) {
+		$menu = wp_get_nav_menu_object($locations[$menu_name]);
+		$menu_items = wp_get_nav_menu_items($menu->term_id);
+
+		$menu_list = '<nav>' ."\n";
+		$menu_list .= '<ul class="desktop">' ."\n";
+		foreach ((array) $menu_items as $key => $menu_item) {
+			$title = $menu_item->title;
+			$url = $menu_item->url;
+			$menu_list .= '<a href="'. $url .'"><li>'. $title .'</li></a>' ."\n";
+		}
+		$menu_list .= '</ul>' ."\n";
+		$menu_list .= "<div class='mobileNav'><div class='mobile-hamburger'><span></span></div>";
+		$menu_list .= '<ul class="mobile">' ."\n";
+		foreach ((array) $menu_items as $key => $menu_item) {
+			$title = $menu_item->title;
+			$url = $menu_item->url;
+			$menu_list .= '<a href="'. $url .'"><li>'. $title .'</li></a>' ."\n";
+		}
+		$menu_list .= '</ul></div>' ."\n";
+		$menu_list .= '</nav>' ."\n";
+	} else {
+		$menu_list = '<!-- no list defined -->';
+	}
+	echo $menu_list;
+}
+
 /**
  * Register widget area.
  *
@@ -108,6 +137,13 @@ function warriors_of_the_month_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
 }
+
+add_action('get_header', 'my_filter_head');
+
+function my_filter_head() {
+	remove_action('wp_head', '_admin_bar_bump_cb');
+}
+
 add_action( 'widgets_init', 'warriors_of_the_month_widgets_init' );
 
 /**
@@ -123,6 +159,8 @@ function warriors_of_the_month_scripts() {
 	wp_enqueue_style( 'warriors-of-the-month-font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' );
 
 	wp_enqueue_script( 'warriors-of-the-month-jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js' );
+
+	wp_enqueue_script( 'warriors-of-the-month-main-js', get_template_directory_uri() . '/js/main.js' );
 
 	wp_enqueue_script( 'warriors-of-the-month-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 

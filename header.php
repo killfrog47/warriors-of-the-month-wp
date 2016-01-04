@@ -21,26 +21,12 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site">	
+<div id="page" class="site">
 	<header>
 		<div class="hero-marquee">
 			<img src="<?php echo(get_header_image()); ?>" alt="<?php echo( get_bloginfo( 'title' ) ); ?>" class="logo">
 		</div>
 	</header>
-
-		<nav>
-			<ul class="desktop">
-				<?php include(get_template_directory_uri() . 'inc/nav-urls.php'); ?>
-			</ul>
-			<div class="mobileNav">
-				<div class="mobile-hamburger">
-					<span></span>
-				</div>	
-				<ul class="mobile">
-					<?php include(get_template_directory_uri() . 'inc/nav-urls.php'); ?>
-				</ul>
-			</div>
-
-		</nav>
+	<?php if (function_exists(clean_custom_menus())) clean_custom_menus(); ?>
 
 	<div id="content" class="site-content">
