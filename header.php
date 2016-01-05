@@ -20,13 +20,10 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
-<div id="page" class="site">
+<body>
 	<header>
 		<div class="hero-marquee">
 			<img src="<?php echo(get_header_image()); ?>" alt="<?php echo( get_bloginfo( 'title' ) ); ?>" class="logo">
 		</div>
 	</header>
 	<?php if (function_exists(clean_custom_menus())) clean_custom_menus(); ?>
-
-	<div id="content" class="site-content">
